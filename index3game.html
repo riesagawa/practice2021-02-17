@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body{
+      display:flex;
+      flex-wrap: wrap;
+    }
+    .box{
+      width:100px;
+      height:100px;
+      background-color: skyblue;
+      cursor: pointer;
+      transition: .8s;
+      margin:0 8px 8px 0;
+      text-align: center;
+      line-height: 100px;
+    }
+    .win{
+      background-color:pink;
+      border-radius:50%;
+      transform:rotate(360deg) ;
+    }
+    .lose{
+      transform: scale(.9);
+    }
+  </style>
+  <title>javaScript Document</title>
+</head>
+<body>
+  
+  <script> //divを100個
+    'use script';
+
+    const num = 5;
+    const winner = Math.floor(Math.random()*num);//0-4
+
+    for(let i = 0 ; i < num ; i++){
+      // div要素を作る
+      const div = document.createElement('div');
+      // 作りたいdivにはboxクラスがついている
+      div.classList.add('box');
+  
+      // クリックによってイベント発生
+      div.addEventListener('click',()=>{
+        // 変化後のクラスcircleに交互に切り替え
+        if(i === winner) {
+          div.textContent='Win!';
+          div.classList.add('win');
+        }else{
+          div.textContent='Lose!';
+          div.classList.add('lose');
+          
+        }
+      });　//ただ追加しただけではbodyの子要素とはなら
+      // ず、ブラウザに表示されないので、指定してあげる
+      // divをbodyの子要素として追加する
+      document.body.appendChild(div);
+    }
+  </script>
+</body>
+</html>
